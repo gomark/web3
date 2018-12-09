@@ -4,6 +4,7 @@ steps:
   dir: 'web3'
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/web3-image:$COMMIT_SHA', '.' ]
+  dir: 'web3'
 - name: 'gcr.io/cloud-builders/docker'
   args: ["push", "gcr.io/$PROJECT_ID/web3-image:$COMMIT_SHA"]
 - name: 'gcr.io/cloud-builders/kubectl'
