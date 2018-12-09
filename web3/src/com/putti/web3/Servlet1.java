@@ -27,7 +27,7 @@ public class Servlet1 extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("web3: Served at: ").append(request.getContextPath());
+		response.getWriter().append("updated at branch web3 (web3-putti): Served at: ").append(request.getContextPath());
 	}
 
 	/**
