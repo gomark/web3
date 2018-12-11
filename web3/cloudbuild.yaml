@@ -12,7 +12,7 @@ steps:
   - 'set'
   - 'image'
   - 'deployment'
-  - 'tomcat-1'
+  - 'tomcat-2'
   - 'my-tomcat=gcr.io/$PROJECT_ID/web3-image:$COMMIT_SHA'
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=asia-southeast1-b'
