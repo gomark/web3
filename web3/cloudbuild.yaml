@@ -13,7 +13,7 @@ steps:
   - 'image'
   - 'deployment'
   - 'tomcat-2'
-  - 'quickstart-image-=gcr.io/$PROJECT_ID/web3-image:$COMMIT_SHA'
+  - 'quickstart-image=gcr.io/$PROJECT_ID/web3-image:$COMMIT_SHA'
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=asia-southeast1-b'
   - 'CLOUDSDK_CONTAINER_CLUSTER=standard-cluster-1'
