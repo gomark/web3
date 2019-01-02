@@ -32,5 +32,17 @@
   		<version>3.0.1</version>
   		<scope>provided</scope>
   	</dependency>
+  	
+	<dependency>
+		<groupId>com.google.cloud.bigtable</groupId>
+		<artifactId>bigtable-hbase-1.x</artifactId>
+		<version>1.6.0</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>io.grpc</groupId>
+		<artifactId>grpc-core</artifactId>
+		<version>1.16.1</version>
+	</dependency>  	
   </dependencies>  
 </project>
