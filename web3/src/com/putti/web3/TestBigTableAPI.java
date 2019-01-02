@@ -35,7 +35,7 @@ public class TestBigTableAPI extends HttpServlet {
 	private byte[] columeFamily = Bytes.toBytes("cf1");
 	private byte[] columnName = Bytes.toBytes("greeting");
 	private static final String[] GREETINGS =
-	      { "Hello World!", "Hello Cloud Bigtable!", "Hello HBase!" };		
+	      { "Hello World!", "Hello Cloud Bigtable!", "Hello HBase!" };
        
     /**
      * @see HttpServlet#HttpServlet()
