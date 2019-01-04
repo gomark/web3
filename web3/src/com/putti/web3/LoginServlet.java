@@ -3,6 +3,7 @@ package com.putti.web3;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,7 +28,26 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		String queryString = request.getQueryString();
+		String user = request.getParameter("user");
+		
+		Cookie c;
+		
+		if (user.equals("canary")) {
+			c = new Cookie("x-user", "canary");
+			response.addHeader("x-user", "canary");		
+				
+		} else {
+			c = new Cookie("x-user", "normal");
+			response.addHeader("x-user", "normal");		
+			
+		}
+		c.setPath("/");
+		response.addCookie(c);
+		
+		response.getWriter().append("User is: ").append(user);
+		response.sendRedirect("../web2/Servlet2");
 	}
 
 	/**
