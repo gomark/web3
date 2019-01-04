@@ -18,6 +18,7 @@ import org.apache.hadoop.hbase.client.Table;
 import org.apache.hadoop.hbase.util.Bytes;
 
 import com.google.cloud.bigtable.hbase.BigtableConfiguration;
+import com.google.gson.Gson;
 
 
 
@@ -52,15 +53,19 @@ public class TestBigTableAPI extends HttpServlet {
         	String rowKey = "greeting1";
             Result getResult = table.get(new Get(Bytes.toBytes(rowKey)));
             if (getResult.isEmpty() == false) {
-            	
-            	
+            	            	
             	String greeting = Bytes.toString(getResult.getValue(this.columeFamily, this.columnName));
             	response.getWriter().append("\nGreeting={" + greeting + "}");
 
             } else {
             	response.getWriter().append("\nNot found rowKey=" + rowKey);
             }
+            
+            
+            table.close();
+            log.info("readSingleRowFromKey()");
                 		
+            conn.close();
     	} catch (Exception e) {
     		log.log(Level.SEVERE, e.toString());
     	}
