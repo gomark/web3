@@ -138,6 +138,7 @@ public class TestBigTableAPI extends HttpServlet {
 		
     	try {
     		conn = BigtableConfiguration.connect(this.projectId, this.instanceId);
+    		
     		Table table = conn.getTable(TableName.valueOf(tableName));
         	String rowKey = "MMM#2006-01-11";
 
