@@ -127,7 +127,7 @@ public class TestBigTableAPI extends HttpServlet {
 		byte[] columnName = Bytes.toBytes("Close");
 		
 		Connection conn = null;
-		log.info("Update single record");
+		log.info("Update single records");
 		
     	try {
     		conn = BigtableConfiguration.connect(this.projectId, this.instanceId);
