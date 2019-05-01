@@ -100,6 +100,8 @@ public class TestBigTableAPI extends HttpServlet {
 		int c = Integer.valueOf(str);
 		response.getWriter().append("handling case:" + str + "\n");
 		
+		long startMil = System.currentTimeMillis();
+		
 		switch (c) {
 			case 0:
 				response.getWriter().append("missing querystring 'case' \n");
@@ -118,6 +120,11 @@ public class TestBigTableAPI extends HttpServlet {
 				break;
 				
 		}
+		
+		long endMil = System.currentTimeMillis();
+		long elapsed = endMil-startMil;
+		
+		response.getWriter().append("\nelapsed=" + String.valueOf(elapsed) + " mil\n");
 		
 	}
 	
