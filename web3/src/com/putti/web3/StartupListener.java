@@ -22,6 +22,8 @@ public class StartupListener implements ServletContextListener {
 		this.conn = BigtableConfiguration.connect(this.projectId, this.instanceId);
 		System.out.println("connected BigTable");
 		
+		sce.getServletContext().setAttribute("bt_conn", this.conn);
+		
 		//this.doPubSub();
 	}
 	

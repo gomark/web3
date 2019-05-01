@@ -173,7 +173,8 @@ public class TestBigTableAPI extends HttpServlet {
 		FilterList fl = new FilterList();
 		
     	try {
-    		conn = BigtableConfiguration.connect(this.projectId, this.instanceId);
+    		//conn = BigtableConfiguration.connect(this.projectId, this.instanceId);
+    		conn = (Connection) this.getServletContext().getAttribute("bt_conn");
     		Table table = conn.getTable(TableName.valueOf(tableName));
         	
     		/*
@@ -203,15 +204,7 @@ public class TestBigTableAPI extends HttpServlet {
     		e.printStackTrace();
     	    		
     	}	
-    	
-    	if (conn != null) {
-    		try {
-    			if (conn.isClosed() == false) conn.close();	
-    		} catch (Exception e) {
-    			log.log(Level.SEVERE, e.toString());
-    		}
-    		
-    	}		
+		
 	}
 	
 	private void testReadCase1(HttpServletRequest request, HttpServletResponse response) {
