@@ -16,23 +16,20 @@ import com.google.cloud.datastore.QueryResults;
 import com.google.cloud.datastore.StructuredQuery.PropertyFilter;
 
 /**
- * Servlet implementation class DatastoreAPI
+ * Servlet implementation class DatastoreAPI4
  */
-@WebServlet("/DatastoreAPI")
-public class DatastoreAPI extends HttpServlet {
+@WebServlet("/DatastoreAPI4")
+public class DatastoreAPI4 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DatastoreAPI() {
+    public DatastoreAPI4() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String str = request.getParameter("case");
 		if (str == null) {
@@ -53,28 +50,12 @@ public class DatastoreAPI extends HttpServlet {
 				this.testReadCase1(request, response);
 				break;
 				
-			case 2: // Reading multiple record
-				this.testReadCase2(request, response);
-				break;
-				
-			case 3: // Update single record
-				this.testReadCase3(request, response);
-				break;
-				
 		}
 		
 		long endMil = System.currentTimeMillis();
 		long elapsed = endMil-startMil;
 		
 		response.getWriter().append("\nelapsed=" + String.valueOf(elapsed) + " mil\n");
-	}
-	
-	private void testReadCase3(HttpServletRequest request, HttpServletResponse response) {
-		
-	}
-	
-	private void testReadCase2(HttpServletRequest request, HttpServletResponse response) {
-		
 	}
 	
 	private void testReadCase1(HttpServletRequest request, HttpServletResponse response) {
@@ -86,12 +67,12 @@ public class DatastoreAPI extends HttpServlet {
 			System.out.println(".Connection elapsed=" + String.valueOf(elapsed));
 			response.getWriter().append(".Connection elapsed=" + String.valueOf(elapsed) + "\n");
 			
-			KeyFactory keyFactory = new KeyFactory("putti-project");			
+			KeyFactory keyFactory = new KeyFactory("putti-project4");			
 			keyFactory.setKind("Token");
 			
 			Query<Entity> query = Query.newEntityQueryBuilder()					
 				    .setKind("Token")
-				    .setFilter(PropertyFilter.eq("__key__", keyFactory.newKey(5634472569470976l)))
+				    .setFilter(PropertyFilter.eq("__key__", keyFactory.newKey(5634161670881280l)))
 				    .build();
 			
 			startMil = System.currentTimeMillis();
