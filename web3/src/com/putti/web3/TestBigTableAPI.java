@@ -137,7 +137,7 @@ public class TestBigTableAPI extends HttpServlet {
 		log.info("Update single records");
 		
     	try {
-    		conn = BigtableConfiguration.connect(this.projectId, this.instanceId);
+    		conn = (Connection) this.getServletContext().getAttribute("bt_conn");
     		
     		Table table = conn.getTable(TableName.valueOf(tableName));
         	String rowKey = "MMM#2006-01-11";
@@ -150,15 +150,7 @@ public class TestBigTableAPI extends HttpServlet {
     		log.log(Level.SEVERE, e.toString());
     	    		
     	}	
-    	
-    	if (conn != null) {
-    		try {
-    			if (conn.isClosed() == false) conn.close();	
-    		} catch (Exception e) {
-    			log.log(Level.SEVERE, e.toString());
-    		}
     		
-    	}		
 	}	
 	
 	private void testReadCase2(HttpServletRequest request, HttpServletResponse response) {
@@ -216,7 +208,7 @@ public class TestBigTableAPI extends HttpServlet {
 		log.info("Reading single record..");
 		
     	try {
-    		conn = BigtableConfiguration.connect(this.projectId, this.instanceId);
+    		conn = (Connection) this.getServletContext().getAttribute("bt_conn");
     		Table table = conn.getTable(TableName.valueOf(tableName));
         	String rowKey = "MMM#2006-01-11";
             Result getResult = table.get(new Get(Bytes.toBytes(rowKey)));
@@ -237,14 +229,6 @@ public class TestBigTableAPI extends HttpServlet {
     	    		
     	}	
     	
-    	if (conn != null) {
-    		try {
-    			if (conn.isClosed() == false) conn.close();	
-    		} catch (Exception e) {
-    			log.log(Level.SEVERE, e.toString());
-    		}
-    		
-    	}
 	}
 
 	/**
