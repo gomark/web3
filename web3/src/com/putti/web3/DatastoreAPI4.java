@@ -67,7 +67,7 @@ public class DatastoreAPI4 extends HttpServlet {
 			System.out.println(".Connection elapsed=" + String.valueOf(elapsed));
 			response.getWriter().append(".Connection elapsed=" + String.valueOf(elapsed) + "\n");
 			
-			KeyFactory keyFactory = new KeyFactory("putti-project4");			
+			KeyFactory keyFactory = new KeyFactory("putti-project-4");			
 			keyFactory.setKind("Token");
 			
 			Query<Entity> query = Query.newEntityQueryBuilder()					
