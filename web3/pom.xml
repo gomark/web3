@@ -43,6 +43,14 @@
 		<groupId>io.grpc</groupId>
 		<artifactId>grpc-core</artifactId>
 		<version>1.16.1</version>
-	</dependency>  	
+	</dependency>
+	
+	
+	<dependency>
+		<groupId>com.google.cloud</groupId>
+		<artifactId>google-cloud-datastore</artifactId>
+		<version>1.72.0</version>
+	</dependency>
+	
   </dependencies>  
 </project>
