@@ -84,7 +84,7 @@ public class DatastoreAPI4 extends HttpServlet {
 			
 			while (results.hasNext()) {
 				Entity currentEntity = results.next();
-				response.getWriter().append("customer_id=" + currentEntity.getString("customerId") + ", you're invited to a pizza party!\n ");
+				response.getWriter().append("customer_id=" + currentEntity.getLong("customerId") + ", you're invited to a pizza party!\n ");
 			}			
 		} catch (Exception e) {
 			System.out.println(e.toString());
