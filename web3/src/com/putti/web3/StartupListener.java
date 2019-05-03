@@ -18,7 +18,7 @@ public class StartupListener implements ServletContextListener {
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
 		System.out.println("contextInitialzied");
-		System.out.println("Connecting BigTable");
+		System.out.println("Connecting BigTable..");
 		this.conn = BigtableConfiguration.connect(this.projectId, this.instanceId);
 		System.out.println("connected BigTable");
 		
