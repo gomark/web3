@@ -78,18 +78,37 @@ public class DatastoreAPI extends HttpServlet {
 	}
 	
 	private void testReadCase1(HttpServletRequest request, HttpServletResponse response) {
-		Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
-		KeyFactory keyFactory = new KeyFactory("putti-project");
-		keyFactory.setKind("DeviceData");
-		Query<Entity> query = Query.newEntityQueryBuilder()
-			    .setKind("DeviceData")
-			    .setFilter(PropertyFilter.eq("__key__", keyFactory.newKey("083D1BC8CDCA4F57AE94B26D83A7D63A-0002d8a7-5f88-41d6-8cb8-070290bd633f")))
-			    .build();
-		QueryResults<Entity> results = datastore.run(query);
-		while (results.hasNext()) {
-		  Entity currentEntity = results.next();
-		  System.out.println(currentEntity.getString("name") + ", you're invited to a pizza party!");
-		}		
+		try {
+			long startMil = System.currentTimeMillis();
+			Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
+			long endMil = System.currentTimeMillis();
+			long elapsed = endMil-startMil;
+			System.out.println(".Connection elapsed=" + String.valueOf(elapsed));
+			
+			KeyFactory keyFactory = new KeyFactory("putti-project");			
+			keyFactory.setKind("Token");
+			
+			Query<Entity> query = Query.newEntityQueryBuilder()					
+				    .setKind("Token")
+				    .setFilter(PropertyFilter.eq("__key__", keyFactory.newKey(5634472569470976l)))
+				    .build();
+			
+			startMil = System.currentTimeMillis();
+			QueryResults<Entity> results = datastore.run(query);
+			endMil = System.currentTimeMillis();
+			elapsed = endMil-startMil;
+			System.out.println("Query elapsed=" + String.valueOf(elapsed));
+			
+			while (results.hasNext()) {
+				Entity currentEntity = results.next();
+				response.getWriter().append("customer_id=" + currentEntity.getString("customerId") + ", you're invited to a pizza party!\n ");
+			}			
+		} catch (Exception e) {
+			System.out.println(e.toString());
+			e.printStackTrace();
+			
+		}
+
 	}	
 
 	/**
