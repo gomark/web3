@@ -14,6 +14,8 @@ steps:
   - 'deployment'
   - '${_DEPLOYMENT_NAME}'
   - '${_POD_SPEC}=gcr.io/$PROJECT_ID/web3-image:$COMMIT_SHA'
+  - '-n'
+  - ${_NAMESPACE}
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=${_CLOUDSDK_COMPUTE_ZONE}'
   - 'CLOUDSDK_CONTAINER_CLUSTER=${_CLOUDSDK_CONTAINER_CLUSTER}'
